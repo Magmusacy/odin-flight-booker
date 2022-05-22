@@ -1,0 +1,19 @@
+<%= form_with url: root_path, method: :get, class: "search-form" do |f| %>
+  <div>
+    <%= f.label :departure_airport, "Departure airports:" %>
+    <%= f.select :departure_airport, @departure_airports %>
+
+    <%= f.label :arrival_airport, "Arrival airports:" %>
+    <%= f.select :arrival_airport, @arrival_airports %>
+  </div>
+
+  <div>
+    <%= f.label :date, "Available dates:" %>
+    <%= f.select :date, @available_dates %>
+
+    <%= f.label :passanger_count, "Number of passangers:" %>
+    <%= f.select :passanger_count, [1, 2, 3, 4] %>
+  </div>
+
+  <%= f.submit "Search" %>
+<% end %>

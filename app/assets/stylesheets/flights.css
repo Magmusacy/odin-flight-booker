@@ -1,0 +1,25 @@
+.search-form {
+  --form-width: 700px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  background-color: rgb(227, 180, 124);
+}
+
+.search-form > div {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  width: var(--form-width);
+}
+
+.search-form select,
+.search-form label {
+  width: 150px;
+}
+
+.search-form input[type="submit"] {
+  width: var(--form-width);
+}

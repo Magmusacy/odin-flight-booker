@@ -1,0 +1,8 @@
+<%= render "search_flight_form",
+           departure_airports: @departure_airports,
+           arrival_airport: @arrival_airport,
+           available_dates: @available_dates %>
+
+<%= render "book_flight_form",
+           available_flights: @available_flights,
+           passanger_count: @passanger_count %>

@@ -1,0 +1,17 @@
+<%# available_flights isn't nil but can still be empty %>
+<% if available_flights && !available_flights.empty? %>
+  <%= form_with url: root_path, method: :get do |f| %>
+    <%= f.hidden_field :passanger_count, value: @passanger_count %>
+    <fieldset>
+      <legend>Available flights</legend>
+      <% available_flights.each do |flight| %>
+        <div>
+          <%= f.radio_button :flight, flight.id  %>
+          <%= f.label :flight, "[#{flight.formatted_datetime}] #{flight.departure_airport.code} -> #{flight.arrival_airport.code}",  value: flight.id %>
+        </div>
+      <% end %>
+    </fieldset>
+
+    <%= f.submit "Book a flight" %>
+  <% end %>
+<% end %>
