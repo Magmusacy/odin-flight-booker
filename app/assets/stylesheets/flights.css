@@ -17,9 +17,17 @@
 
 .search-form select,
 .search-form label {
-  width: 150px;
+  width: 175px;
 }
 
 .search-form input[type="submit"] {
   width: var(--form-width);
+}
+
+.search-form select {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.search-form option:first-child {
+  color: red;
 }

@@ -1,18 +1,22 @@
 <%= form_with url: root_path, method: :get, class: "search-form" do |f| %>
   <div>
     <%= f.label :departure_airport, "Departure airports:" %>
-    <%= f.select :departure_airport, @departure_airports %>
+    <%= f.select :departure_airport, @departure_airports,
+        { include_blank: "--Select an option--" }, { required: true } %>
 
     <%= f.label :arrival_airport, "Arrival airports:" %>
-    <%= f.select :arrival_airport, @arrival_airports %>
+    <%= f.select :arrival_airport, @arrival_airports,
+        { include_blank: "--Select an option--" }, { required: true } %>
   </div>
 
   <div>
     <%= f.label :date, "Available dates:" %>
-    <%= f.select :date, @available_dates %>
+    <%= f.select :date, @available_dates,
+        { include_blank: "--Select an option--" }, { required: true }  %>
 
     <%= f.label :passanger_count, "Number of passangers:" %>
-    <%= f.select :passanger_count, [1, 2, 3, 4] %>
+    <%= f.select :passanger_count, [1, 2, 3, 4],
+        { include_blank: "--Select an option--", class: "Brah" }, { required: true }  %>
   </div>
 
   <%= f.submit "Search" %>
