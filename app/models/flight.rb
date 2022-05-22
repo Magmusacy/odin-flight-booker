@@ -1,6 +1,8 @@
 class Flight < ApplicationRecord
   belongs_to :departure_airport, class_name: 'Airport'
   belongs_to :arrival_airport, class_name: 'Airport'
+  has_many :bookings
+  has_many :passengers, through: :bookings
 
   scope :formatted_dates, -> { order(:start_datetime).pluck(:start_datetime).map { |date| date.strftime("%d/%m/%Y") }.uniq }
 
