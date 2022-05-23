@@ -1,11 +1,13 @@
 .search-form {
-  --form-width: 700px;
-  padding: 10px;
+  --form-width: 1000px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 10px;
   align-items: center;
-  background-color: rgb(227, 180, 124);
+  border-bottom: white 1px solid;
+  height: 20%;
 }
 
 .search-form > div {
@@ -17,17 +19,76 @@
 
 .search-form select,
 .search-form label {
-  width: 175px;
+  width: 225px;
 }
 
-.search-form input[type="submit"] {
+input[type="submit"] {
   width: var(--form-width);
+  height: 50px;
+  border-radius: 20px;
+  border: none;
+}
+
+input[type="submit"]:hover {
+  background: rgb(211, 211, 211);
 }
 
 .search-form select {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.search-form option:first-child {
-  color: red;
+.booking {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  flex-grow: 1;
+  /* overflow: hidden; is needed to elegantly make scrollable flight picker */
+  overflow: hidden;
+  justify-content: space-between;
+}
+
+fieldset {
+  border-color: #71717a;
+  /* I have no idea why this works, my guess is that any height must be present for overflow to work properly
+     and then flex grow fills out the rest of the free space just how i want.
+     height: 1px;
+     flex-grow: 1;
+     ^^^ This was my previous solution before making overflow-hidden on the parent */
+  overflow-y: scroll;
+}
+
+fieldset > div {
+  align-items: center;
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+fieldset > div:nth-of-type(n + 2) {
+  border-top: solid #71717a 1px;
+}
+
+fieldset > div:hover {
+  color: black;
+  background-color: #e5e5e5;
+}
+
+fieldset > div > input {
+  accent-color: black;
+}
+
+fieldset label {
+  width: 100%;
+}
+
+.flight-index {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.booking input[type="submit"] {
+  height: 60px;
 }

@@ -8,7 +8,7 @@
 
 
 def random_date
-  DateTime.now + (rand * 100).to_i
+  DateTime.now + (rand * 10).to_i
 end
 
 # This makes it possible for a flight to depart and arrive at the same airport which is pretty silly
@@ -29,7 +29,7 @@ end
 
 def populate_flights
   Flight.delete_all
-  1000.times { Flight.create({ departure_airport_id: random_airport_id, arrival_airport_id: random_airport_id, start_datetime: random_date, duration: random_duration }) }
+  10000.times { Flight.create({ departure_airport_id: random_airport_id, arrival_airport_id: random_airport_id, start_datetime: random_date, duration: random_duration }) }
   Flight.create({ departure_airport_id: 4, arrival_airport_id: 4, start_datetime: DateTime.parse('21/05/2022'), duration: 0})
 end
 
