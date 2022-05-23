@@ -5,6 +5,8 @@ class FlightsController < ApplicationController
                                  .where(arrival_airport_id:   params[:arrival_airport])
                                  # this weird looking conversion must be present because LIKE isn't available for datetime types in sql
                                  .where("to_char(start_datetime, 'dd/mm/yyyy') LIKE ?", params[:date])
+                                 # avoid N + 1 queries problem
+                                 .includes(:departure_airport, :arrival_airport)
       @passanger_count = params[:passanger_count]
     end
 
