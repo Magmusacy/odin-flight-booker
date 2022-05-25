@@ -1,0 +1,23 @@
+<%= form_with model: @booking, class: "booking-new" do |f| %>
+  <%= f.hidden_field :flight_id, value: @booking.flight_id %>
+  <div class="passengers">
+    <% @passengers.each_with_index do |passenger, idx| %>
+      <%= f.fields_for :passenger_attributes, index: idx do |passenger_f| %>
+        <div class="container">
+          <h3>Passenger <%= idx + 1 %></h3>
+
+          <div>
+            <%= passenger_f.label :name, "Name:" %>
+            <%= passenger_f.text_field :name %>
+          </div>
+
+          <div>
+            <%= passenger_f.label :email, "Email:" %>
+            <%= passenger_f.email_field :email %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <%= f.submit "Submit" %>
+<% end %>

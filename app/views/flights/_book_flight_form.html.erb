@@ -1,6 +1,6 @@
 <%# available_flights isn't nil but can still be empty %>
 <% if available_flights && !available_flights.empty? %>
-  <%= form_with url: bookings_new_path, method: :get, class: "booking" do |f| %>
+  <%= form_with url: new_booking_path, method: :get, class: "booking" do |f| %>
     <%= f.hidden_field :passanger_count, value: @passanger_count %>
     <fieldset>
       <legend>Available flights</legend>
