@@ -1,0 +1,28 @@
+<div class="passenger-info">
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <% passengers.size.times do |i| %>
+          <th>Passenger <%= i + 1 %></th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+    <tr>
+      <th>Name</th>
+      <% passengers.each do |passenger| %>
+        <td><%= passenger.name %></td>
+      <% end %>
+    </tr>
+
+    <tr>
+      <th>Email</th>
+      <% passengers.each do |passenger| %>
+        <td><%= passenger.email %></td>
+      <% end %>
+    </tr>
+    </tbody>
+  </table>
+</div>
