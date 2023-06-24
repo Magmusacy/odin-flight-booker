@@ -36,7 +36,9 @@ export default class extends Controller {
     let lastPassenger = this.passengerTargets[this.passengerTargets.length - 1]
     lastPassenger.remove()
     this.passengerNumberValue--
-    this.dynamicPassengersValue--
-    console.log(lastPassenger)
+    // ensure dynamicPassengersValue can't be negative
+    if (this.dynamicPassengersValue > 0) {
+      this.dynamicPassengersValue-- 
+    } 
   }
 }
