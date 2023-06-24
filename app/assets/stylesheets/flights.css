@@ -22,14 +22,22 @@
   width: 225px;
 }
 
-input[type="submit"] {
+input[type="submit"],
+button[type="button"] {
   width: var(--form-width);
   height: 50px;
   border-radius: 20px;
   border: none;
 }
 
-input[type="submit"]:hover {
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+input[type="submit"]:hover,
+button[type="button"]:hover  {
   background: rgb(211, 211, 211);
 }
 

@@ -1,37 +1,32 @@
-<%= form_with model: @booking, class: "booking-new" do |f| %>
+<%= form_with model: @booking, class: "booking-new", data: { controller: "passenger", "passenger-passenger-number-value": @booking.passengers.length } do |f| %>
   <%= render "flight_table", booking: @booking %>
 
   <%= f.hidden_field :flight_id, value: @booking.flight_id %>
 
-  <div class="passengers">
+  <div class="passengers" data-passenger-target="passengerList">
     <% @booking.passengers.each_with_index do |passenger, idx| %>
-      <%= f.fields_for :passengers_attributes, passenger, index: idx do |passenger_f| %>
-        <div class="container">
-          <h3>Passenger <%= idx + 1 %></h3>
-          <div>
-            <%= passenger_f.label :name, "Name:" %>
-            <%= passenger_f.text_field :name, required: true %>
-          </div>
-
-          <div>
-            <%= passenger_f.label :email, "Email:" %>
-            <%= passenger_f.email_field :email, required: true %>
-          </div>
-
-          <% unless passenger_f.object.errors.empty? %>
-            <div class="error-showcase">
-              <ul>
-                <h3>Errors:</h3>
-                <% passenger_f.object.errors.full_messages.each do |message| %>
-                  <li><%=message%></li>
-                <% end %>
-              </ul>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
+      <%= render partial: "passenger_template", locals: { passenger: passenger, idx: idx, f: f} %>
     <% end %>
+
+    <template data-passenger-target="template" data-passenger-dynamic-passengers-value="0">
+      <div class="container" data-passenger-target="passenger">
+        <h3 data-passenger-target="globalLabel"></h3>
+        <div>
+          <%= label_tag :name, "Name:", data: { "passenger-target": "textLabel" }  %>
+          <%= text_field_tag "booking[passengers_attributes][][name]", nil, required: true, data: { "passenger-target": "textField" } %>
+        </div>
+        <div>
+          <%= label_tag :email, "Email:", data: { "passenger-target": "emailLabel" } %>
+          <%= email_field_tag "booking[passengers_attributes][][name]", nil, required: true, data: { "passenger-target": "emailField" } %>
+        </div>
+      </div>
+    </template>
   </div>
 
-  <%= f.submit "Submit" %>
+  <div class="buttons">
+    <%= f.submit "Submit" %>
+    <%= f.button "Add passenger", type: "button", data: { action: "passenger#add" } %>
+    <%= f.button "Remove passenger", type: "button", data: { action: "passenger#remove" } %>
+  </div>
 <% end %>
+

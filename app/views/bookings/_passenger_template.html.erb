@@ -1,0 +1,23 @@
+<%= f.fields_for :passengers_attributes, passenger, index: idx do |passenger_f| %>
+    <div class="container" data-passenger-target="passenger">
+        <h3>Passenger <%= idx + 1 %></h3>
+        <div>
+        <%= passenger_f.label :name, "Name:" %>
+        <%= passenger_f.text_field :name, required: true %>
+        </div>
+        <div>
+        <%= passenger_f.label :email, "Email:" %>
+        <%= passenger_f.email_field :email, required: true %>
+        </div>
+        <% unless passenger_f.object.errors.empty? %>
+        <div class="error-showcase">
+            <ul>
+            <h3>Errors:</h3>
+            <% passenger_f.object.errors.full_messages.each do |message| %>
+                <li><%=message%></li>
+            <% end %>
+            </ul>
+        </div>
+        <% end %>
+    </div>
+<% end %>
